@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 500
+
+development:
+  <<: *default
+  database: blog_development
+  username: rails
+  password: <%= ENV['PG_RAILS_PWD'] %>
+
+test:
+  <<: *default
+  database: blog_test
+  username: rails
+  password: <%= ENV['PG_RAILS_PWD'] %>
